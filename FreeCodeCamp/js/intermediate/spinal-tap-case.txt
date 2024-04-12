@@ -1,0 +1,22 @@
+//refactoring use regular expression 
+function spinalCase(str) {
+  //let newStr = str.split(" ")
+  let newStr = str.split("_").join(" ")
+  
+  newStr = newStr.split(" ").map( item => {
+    let result = "";
+    for(let x of item){
+      let asciiCode = x.charCodeAt()
+      if(asciiCode >= 65 && asciiCode <= 90)
+        result += " " + x;
+      else
+        result += x
+    }
+    return result.trim().toLowerCase()
+  }).join(" ")
+  
+  
+  return newStr.split(" ").join("-");
+}
+
+console.log(spinalCase('This Is Spinal Tap'));

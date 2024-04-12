@@ -1,0 +1,7 @@
+function confirmEnding(str, target) {
+  //use substring
+ let endStr = str.substring(str.length - target.length);
+  return endStr == target;
+}
+
+console.log(confirmEnding("Connor", "n"));

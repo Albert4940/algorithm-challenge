@@ -1,0 +1,12 @@
+function diffArray(arr1, arr2) {
+  const newArr = [];
+  let doubleItem = []
+
+  for(let x of arr1){
+    if(arr2.includes(x))
+      doubleItem.push(x)
+  }
+  return arr1.concat(arr2).filter(x => !doubleItem.includes(x));
+}
+
+console.log(diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]));

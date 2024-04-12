@@ -1,0 +1,20 @@
+function sumAll(arr) {
+  let newArr = [...arr].sort((a,b) => a-b)
+  let result = 0;
+  let maxValue = newArr[newArr.length - 1]
+  let minValue = newArr[0]
+
+  result += minValue + maxValue
+  
+  //To Avoid add again the maxValue
+  maxValue--;
+  
+  while(maxValue > minValue){
+      result += maxValue;
+      maxValue--;
+  }
+
+  return result;
+}
+
+console.log(sumAll([4, 1]));

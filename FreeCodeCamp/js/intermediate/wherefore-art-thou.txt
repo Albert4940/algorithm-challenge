@@ -1,0 +1,25 @@
+function whatIsInAName(collection, source) {
+  let result = [];
+  let sourceArr = Object.entries(source)
+
+  for(let x of collection){
+    let test = true;
+    
+    for(let y of sourceArr){
+      const [key, value] = y
+
+      if(!x.hasOwnProperty(key) || x[key] != value){
+        test = false;
+        break;
+      }
+    }
+    
+    if(test)
+      result.push(x)
+  }
+
+  return result;
+  
+}
+
+console.log(whatIsInAName([{ "apple": 1, "bat": 2 }, { "bat": 2 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "bat": 2 }));

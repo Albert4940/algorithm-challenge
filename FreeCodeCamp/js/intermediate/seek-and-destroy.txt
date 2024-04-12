@@ -1,0 +1,12 @@
+function destroyer(...arr) {
+  let newArr = arr[0]
+  let argArr = arr.slice(1)
+  let doubleItem = []
+  for(let x of newArr){
+    if(argArr.includes(x))
+      doubleItem.push(x)
+  }
+  return newArr.filter(x => !doubleItem.includes(x));
+}
+
+console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));

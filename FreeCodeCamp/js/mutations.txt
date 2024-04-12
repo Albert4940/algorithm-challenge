@@ -1,0 +1,16 @@
+function mutation(arr) {
+  let firstArr = arr[0]
+  let secondArr = arr[1]
+  firstArr = firstArr.toLowerCase()
+  secondArr = secondArr.toLowerCase()
+
+  for(let x of secondArr){
+    if(!firstArr.includes(x))
+      return false;
+    
+  }
+
+  return true;
+}
+
+console.log(mutation(["hello", "hey"]));

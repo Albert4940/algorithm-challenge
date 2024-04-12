@@ -1,0 +1,17 @@
+function translatePigLatin(str) {
+
+  //check if a string not begin with vowel
+  let myRegex = /^[^aeiou]+/gi 
+
+  //match return an array [0] for get the first element of the array
+  let extractConsonant = str.match(myRegex) ? str.match(myRegex)[0] : null
+
+  if(extractConsonant)    
+    return str.slice(extractConsonant.length) + extractConsonant + "ay";
+  else
+    return str + "way"
+    
+  return str;
+}
+
+console.log(translatePigLatin("algorithm"));

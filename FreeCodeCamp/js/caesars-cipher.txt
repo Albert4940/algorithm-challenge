@@ -1,0 +1,30 @@
+function rot13(str) {
+  let result = "";
+  let strArray = str.split("")
+  for(let i = 0; i <= strArray.length - 1; i++){
+    let letter = strArray[i]
+    let asciiCode = letter.charCodeAt()
+    
+    if(asciiCode >= 65 && asciiCode <= 90)
+      result += decrypt(asciiCode)
+    else      
+    result += letter;
+  }
+  return result;
+}
+
+function decrypt(asciiCode){
+  let decryptCode = 0;
+  let decryptLetter = ""
+
+  if(asciiCode >= 65 && asciiCode <= 77)
+    decryptCode = asciiCode + 13;
+
+  if(asciiCode > 77 && asciiCode <= 90)
+    decryptCode = asciiCode - 13;
+
+  
+  return String.fromCharCode(decryptCode); 
+}
+
+console.log(rot13("SERR PBQR PNZC"));

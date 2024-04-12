@@ -1,0 +1,26 @@
+function getIndexToIns(arr, num) {
+  let newArr = arr;
+  let newArrLength = newArr.length;
+  newArr.sort((a,b) => a-b);
+   
+  if(newArrLength == 0)
+    return 0;
+
+  if(num > newArr[newArrLength - 1])
+    return newArrLength
+
+  for(let i = 0; i <= newArr.length - 2; i++){    
+    let maxValue = newArr[i+1];
+    let item = newArr[i]
+
+    if(item == num)
+      return newArr.indexOf(item);
+    
+
+    if(num > item && num <= maxValue)
+      return newArr.indexOf(maxValue);
+  }
+  return newArr;
+}
+
+console.log(getIndexToIns([2, 20, 10], 19));

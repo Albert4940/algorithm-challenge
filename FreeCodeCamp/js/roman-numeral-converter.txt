@@ -1,0 +1,97 @@
+let romanNumerals = ["M","D","C","L","X","V","I"];
+let arabicNumerals = [1000,500,100,50,10,5,1];
+
+function getTableRomanNumeral(num){
+  
+  let position = arabicNumerals.indexOf(num);
+  
+  return position != -1 ? romanNumerals[position] : null;
+}
+
+function getMultipleTableRomanNumeral(value, divisor){
+  let result = "";
+  let i = value;
+
+  while(i > 0){
+    result += getTableRomanNumeral(divisor);
+    i -= divisor;
+  }
+
+  return result;
+}
+
+function breakNumber(num){
+  let result = [];
+  let divisor = 1;
+
+  while(num > 0){
+    let remainder = num % 10;
+
+    if(remainder != 0){
+      /*
+        use unshit in order to add in decroi;36 =       [30, 10],[6,1]
+      */
+      result.unshift([remainder * divisor, divisor]);
+    }
+
+    divisor *= 10;
+    num /= 10;
+    /*
+      parse int in order to pass while condition,
+      paseInt(0,3) = 0 and stop the boucle 
+    */
+    num = parseInt(num);
+  }
+  return result;
+}
+
+function getRomanNumeral(num){
+  let result = "";
+  let brokenNumber = breakNumber(num);
+
+  for(let i = 0; i<= brokenNumber.length - 1; i++){
+      let value = brokenNumber[i][0];
+      let divisor =  brokenNumber[i][1];
+
+      let romanNumeral = getTableRomanNumeral(value)
+      if(romanNumeral != null){
+        result += romanNumeral;
+        continue;
+      }
+
+      for(let i = 0; i <= arabicNumerals.length - 2; i++){
+        let maxValue = arabicNumerals[i]
+        let minValue = arabicNumerals[i + 1]
+
+                if(value > maxValue){
+        	result += getMultipleTableRomanNumeral(value, divisor);
+            break;
+        }
+        else if(value <= maxValue && value >= minValue){
+           if(value == (maxValue - divisor)){
+             result += getTableRomanNumeral(divisor) + getTableRomanNumeral(maxValue);
+             break;
+           }else{
+             result += getTableRomanNumeral(minValue) + getMultipleTableRomanNumeral(value - minValue, divisor);
+             break;
+           }
+        }
+      }
+  }
+  return result;
+}
+function convertToRoman(num) {
+  let response;
+  if(num >= 4000)
+    return null
+  
+  response = getTableRomanNumeral(num);
+  if(response != null)
+    return response;
+  else
+    response = getRomanNumeral(num)
+
+ return response;
+}
+
+console.log(convertToRoman(3999));

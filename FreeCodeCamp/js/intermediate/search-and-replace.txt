@@ -1,0 +1,23 @@
+function myReplace(str, before, after) {
+  let newStr = str;
+
+  //transform the after argument to lower case by default
+  after = after.toLowerCase();
+
+  /* check if the before argument word exist in the string*/
+  if(newStr.search(before) != -1){
+    //Check if the first character of before is Capitalize letter
+    let firstChar = before[0];
+    let asciiCode = firstChar.charCodeAt()
+    
+    if(asciiCode >= 65 && asciiCode <= 90){
+      after  = after[0].toUpperCase() + after.substring(1)      
+    }
+
+    return newStr.replace(before,after)
+      
+  }
+  return str;
+}
+
+console.log(myReplace("I think we should look up there", "up", "Down"));
