@@ -20,6 +20,7 @@ Example 3:
 Input: s = ""
 Output: 0
  */
+
 /**
  * @param {string} s
  * @return {number}
