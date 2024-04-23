@@ -20,7 +20,7 @@
     Input: n = 15
     Output: ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]
 */
-
+//1-50(1 mois avant), 2(4 mois apres le 1)-25, 3(4 - mois )-25
 /**
  * @param {number} n
  * @return {string[]}
