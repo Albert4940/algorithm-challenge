@@ -46,7 +46,9 @@ var findRestaurant = function(list1, list2) {
             commonStrings.push([current,(i+index)])
     }
 
-    commonStrings = [...commonStrings.sort((a,b) => a[1] - b[1])]
-    let minIndex = commonStrings[0][1]
+    let minIndex = Math.min(...commonStrings.map(s => s[1]))
+    
     return commonStrings.filter(s => s[1] == minIndex).map(c => c[0])
 };
+
+console.log(findRestaurant(["happy","sad","good"],["sad","happy","good"]))
