@@ -30,19 +30,19 @@ Explanation: licensePlate only contains the letter 's'. All the words contain 's
  * @return {string}
  */
 var shortestCompletingWord = function(licensePlate, words) {
-    //variable 2d
-    let letters = licensePlate.match(/[a-z]/ig)
+    
+    let letters = licensePlate.match(/[a-z]/ig)////get all letters from licensePlate expre regu
     let result = []
-    let lettersAndNumberOfTimes = letters.map(l => [l.toLowerCase(),letters.join("").match(new RegExp(l, "ig")).length])
-   // return lettersAndNumberOfTimes
-    //get all letters from license expre regu
+    //get each letter and the number of time s and store it into a variable 2D
+    let lettersAndNumberOfTimes = letters.map(l => [l.toLowerCase(),letters.join("").match(new RegExp(l, "ig")).length])//variable 
+    
     for(let word of words){
       const test = lettersAndNumberOfTimes.every(c => c[1] <= word.match(new RegExp(c[0],"ig"))?.length)
       if(test)
         result.push(word)
     }
-    //get each letter and the number of time s and store it into a variable
     
-    //search the match letter from words to licen and get the number of times also expre regu
+    
+    //sorted by ascendeing and return least one
     return result.sort((a,b) => a.length - b.length)[0]    
 };
